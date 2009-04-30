@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright (C) 200r
+# Copyright (C) 2009
 #    Martin Heistermann, <mh at sponc dot de>
 #
 # mediaSchubser is free software: you can redistribute it and/or modify
