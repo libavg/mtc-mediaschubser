@@ -16,7 +16,7 @@
 # along with mediaSchubser.  If not, see <http://www.gnu.org/licenses/>.
 
 from libavg import avg, Point2D, Grabbable
-from libavg import AVGApp, AVGMTAppStarter
+from libavg import AVGApp
 from libavg.mathutil import getScaledDim
 from libavg.AVGAppUtil import getMediaDir
 
@@ -104,6 +104,7 @@ def getFilesInDir(dirName):
     return hrefs
 
 class Schubser(AVGApp):
+    multitouch = True
     def loadImages(self):
         for type_, dirName in (('video', 'videos'), ('image','images')):
             path = os.path.join(self.mainNode.mediadir, 'content', dirName)
@@ -139,6 +140,6 @@ class Schubser(AVGApp):
         self.leave()
 
 if __name__ == '__main__':
-    AVGMTAppStarter(appClass = Schubser, resolution = (1280,720))
+    Schubser.start(resolution = (1280,720))
 
 
