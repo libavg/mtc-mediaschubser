@@ -107,16 +107,15 @@ class Schubser(AVGApp):
     multitouch = True
     def loadImages(self):
         for type_, dirName in (('video', 'videos'), ('image','images')):
-            path = os.path.join(self.mainNode.mediadir, 'content', dirName)
+            path = os.path.join(self._parentNode.mediadir, 'content', dirName)
             for href in os.listdir(path):
                 if href[0]!='.':
-                    self.images.append(Image(self.mainNode, type_, os.path.join(path,href)))
+                    self.images.append(Image(self._parentNode, type_, os.path.join(path,href)))
 
-    def __init__(self, node):
-        self.mainNode = node
-        self.mainNode.mediadir = getMediaDir(__file__)
+    def init(self):
+        self._parentNode.mediadir = getMediaDir(__file__)
         bgNode = g_player.createNode('image', {'href': 'background.jpg'})
-        self.mainNode.appendChild(bgNode)
+        self._parentNode.appendChild(bgNode)
         self.images = []
 
         self.loadImages()
