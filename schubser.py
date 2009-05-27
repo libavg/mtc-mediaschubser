@@ -38,10 +38,11 @@ class Image(object):
                 'href': href,
                 'threaded': True,
                 'loop': True,
+                'mipmap': True,
                 })
             self._mediaNode.play()
         else:
-            self._mediaNode = g_player.createNode('image', {'href': href})
+            self._mediaNode = g_player.createNode('image', {'href': href, 'mipmap': True})
         self._mediaNode.pos = Point2D(5,5)
         self._divNode.appendChild(self._mediaNode)
         parentNode.appendChild(self._divNode)
