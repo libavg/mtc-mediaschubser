@@ -106,9 +106,18 @@ def getFilesInDir(dirName):
 
 class Schubser(AVGApp):
     multitouch = True
+    def __init__(self, parentDir):
+        print "Schubser: moving media to ramdisk"
+        self.contentDir = os.path.join(getMediaDir(__file__), "content")
+        ret = os.system("rsync -av %s/ /dev/shm/mediaschubser_content" % self.contentDir)
+        if ret==0:
+            print "rsync success!"
+            self.contentDir = '/dev/shm/mediaschubser_content'
+        super(Schubser, self).__init__(parentDir)
+
     def loadImages(self):
         for type_, dirName in (('video', 'videos'), ('image','images')):
-            path = os.path.join(self._parentNode.mediadir, 'content', dirName)
+            path = os.path.join(self.contentDir, dirName)
             for href in os.listdir(path):
                 if href[0]!='.':
                     self.images.append(Image(self._parentNode, type_, os.path.join(path,href)))
