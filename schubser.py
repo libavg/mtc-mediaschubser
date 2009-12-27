@@ -40,7 +40,7 @@ class Image(object):
                 'loop': True,
                 'mipmap': True,
                 })
-            self._mediaNode.play()
+            self._mediaNode.pause()
         else:
             self._mediaNode = g_player.createNode('image', {'href': href, 'mipmap': True})
         self._mediaNode.pos = Point2D(5,5)
