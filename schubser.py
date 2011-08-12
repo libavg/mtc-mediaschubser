@@ -18,7 +18,7 @@
 from libavg import avg, Point2D, Grabbable
 from libavg import AVGApp
 from libavg.mathutil import getScaledDim
-from libavg.AVGAppUtil import getMediaDir
+from libavg.utils import getMediaDir
 
 import os
 import random

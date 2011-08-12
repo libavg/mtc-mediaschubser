@@ -1,5 +1,5 @@
 import os
-from libavg.AVGAppUtil import getMediaDir, createImagePreviewNode
+from libavg.utils import getMediaDir, createImagePreviewNode
 from . import schubser
 
 __all__ = [ 'apps', ]
